@@ -1,0 +1,110 @@
+{
+    "steps": [
+        {
+            "step": "setState",
+            "currentBlockInfo": {
+                "blockTimestamp": "10"
+            }
+        },
+        {
+            "step": "setState",
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:owner",
+                    "creatorNonce": "0",
+                    "newAddress": "sc:ping-pong"
+                }
+            ]
+        },
+        {
+            "step": "scDeploy",
+            "id": "",
+            "tx": {
+                "from": "address:owner",
+                "contractCode": "mxsc:output/ping-pong.mxsc.json",
+                "arguments": [
+                    "0x03e8",
+                    "0x2710",
+                    "0x64",
+                    "0x01f4",
+                    "0x01"
+                ],
+                "gasLimit": "5,000,000"
+            },
+            "expect": {
+                "out": [],
+                "status": "0"
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "",
+            "tx": {
+                "from": "address:second-user",
+                "to": "sc:ping-pong",
+                "egldValue": "10",
+                "function": "ping",
+                "arguments": [],
+                "gasLimit": "5,000,000"
+            },
+            "expect": {
+                "status": "4",
+                "message": "str:smart contract not active yet"
+            }
+        },
+        {
+            "step": "setState",
+            "currentBlockInfo": {
+                "blockTimestamp": "101"
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "",
+            "tx": {
+                "from": "address:second-user",
+                "to": "sc:ping-pong",
+                "egldValue": "10",
+                "function": "ping",
+                "arguments": [],
+                "gasLimit": "5,000,000"
+            },
+            "expect": {
+                "out": [],
+                "status": "0"
+            }
+        },
+        {
+            "step": "scQuery",
+            "id": "",
+            "tx": {
+                "to": "sc:ping-pong",
+                "function": "getAllUsers",
+                "arguments": []
+            },
+            "expect": {
+                "out": [
+                    "0x7365636f6e642d757365725f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f"
+                ],
+                "status": "0"
+            }
+        },
+        {
+            "step": "scQuery",
+            "id": "",
+            "tx": {
+                "to": "sc:ping-pong",
+                "function": "getPingAmount",
+                "arguments": [
+                    "0x7365636f6e642d757365725f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f"
+                ]
+            },
+            "expect": {
+                "out": [
+                    "0x0a"
+                ],
+                "status": "0"
+            }
+        }
+    ]
+}

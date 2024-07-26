@@ -1,0 +1,263 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.80.0",
+            "commitHash": "051478957371ee0084a7c0913941d2a8c4757bb9",
+            "commitDate": "2024-07-21",
+            "channel": "Stable",
+            "short": "rustc 1.80.0 (051478957 2024-07-21)"
+        },
+        "contractCrate": {
+            "name": "ping-pong",
+            "version": "0.0.0"
+        },
+        "framework": {
+            "name": "multiversx-sc",
+            "version": "0.51.1"
+        }
+    },
+    "docs": [
+        "An ping-pong contract. To be used as a template when starting a new contract from scratch."
+    ],
+    "name": "PingPong",
+    "constructor": {
+        "inputs": [
+            {
+                "name": "max_ping_amount",
+                "type": "BigUint"
+            },
+            {
+                "name": "deadline",
+                "type": "u64"
+            },
+            {
+                "name": "activation_timestamp",
+                "type": "u64"
+            },
+            {
+                "name": "max_funds",
+                "type": "BigUint"
+            },
+            {
+                "name": "is_open",
+                "type": "bool"
+            }
+        ],
+        "outputs": []
+    },
+    "upgradeConstructor": {
+        "inputs": [
+            {
+                "name": "max_ping_amount",
+                "type": "BigUint"
+            },
+            {
+                "name": "deadline",
+                "type": "u64"
+            },
+            {
+                "name": "activation_timestamp",
+                "type": "u64"
+            },
+            {
+                "name": "max_funds",
+                "type": "BigUint"
+            },
+            {
+                "name": "is_open",
+                "type": "bool"
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "ping",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "EGLD"
+            ],
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "pong",
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "open_contract",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "close_contract",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "set_deadline_and_activation_timestamp",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "deadline",
+                    "type": "u64"
+                },
+                {
+                    "name": "activation_timestamp",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "set_max_ping_amount",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "max_ping_amount",
+                    "type": "BigUint"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "set_max_funds",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "max_funds",
+                    "type": "BigUint"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "isOpen",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "getMaxPingAmount",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getPingAmount",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "user",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getDeadline",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getActivationTimestamp",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getMaxFunds",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getAllUsers",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<Address>",
+                    "multi_result": true
+                }
+            ]
+        }
+    ],
+    "events": [
+        {
+            "identifier": "pingEvent",
+            "inputs": [
+                {
+                    "name": "user",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "timestamp",
+                    "type": "u64",
+                    "indexed": true
+                },
+                {
+                    "name": "amount",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "identifier": "pongEvent",
+            "inputs": [
+                {
+                    "name": "user",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "timestamp",
+                    "type": "u64",
+                    "indexed": true
+                },
+                {
+                    "name": "amount",
+                    "type": "BigUint"
+                }
+            ]
+        }
+    ],
+    "esdtAttributes": [],
+    "hasCallback": false,
+    "types": {}
+}

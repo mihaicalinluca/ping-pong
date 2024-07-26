@@ -1,0 +1,7 @@
+[[proxy]]
+path = "tests/ping_pong_proxy.rs"
+ 
+
+[[proxy]]
+path = "interactor/src/proxy.rs"
+ 
